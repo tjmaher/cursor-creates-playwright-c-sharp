@@ -209,11 +209,13 @@ jobs:
           path: ./allure-results
 
       - name: Generate Allure report
-        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        uses: simple-elf/allure-report-action@v1.13
         with:
-          allure_results: ./allure-results
-          allure_report: ./allure-report
-          keep_reports: 20
+          allure_results: allure-results
+          allure_report: allure-report
+          gh_pages: gh-pages
+          allure_history: allure-history
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
