@@ -1,0 +1,15 @@
+# Ignore build output and user-specific files for .NET projects
+bin/
+obj/
+# Visual Studio files
+.vs/
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+# Rider project files
+.idea/
+# OS generated files
+.DS_Store
+Thumbs.db
