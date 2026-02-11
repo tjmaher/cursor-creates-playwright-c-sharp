@@ -198,6 +198,16 @@ jobs:
       - test_chromium
       - test_firefox
       - test_webkit
+    
+    # Prevent multiple deployments running at the same time
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    
+    # Required for GitHub Pages deployment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -224,6 +234,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./allure-report
+          retention-days: 1 
 
       - name: Deploy to GitHub Pages
         id: deployment
